@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B77848381A867D040066D3BC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B77848371A867D040066D3BC /* AppDelegate.m */; };
 		B778484F1A867D050066D3BC /* APNSRegisterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B778484E1A867D050066D3BC /* APNSRegisterTests.m */; };
-		B778485E1A86C3660066D3BC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B778485C1A86C3660066D3BC /* Info.plist */; };
 		B778485F1A86C3660066D3BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B778485D1A86C3660066D3BC /* main.m */; };
 		B778486D1A86C3730066D3BC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B77848611A86C3730066D3BC /* LaunchScreen.xib */; };
 		B778486E1A86C3730066D3BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B77848631A86C3730066D3BC /* Main.storyboard */; };
@@ -234,7 +233,6 @@
 				B778486E1A86C3730066D3BC /* Main.storyboard in Resources */,
 				B778486F1A86C3730066D3BC /* Images.xcassets in Resources */,
 				B778486D1A86C3730066D3BC /* LaunchScreen.xib in Resources */,
-				B778485E1A86C3660066D3BC /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = APNSRegister/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -392,6 +390,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = APNSRegister/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

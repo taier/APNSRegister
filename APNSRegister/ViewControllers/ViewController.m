@@ -38,11 +38,21 @@
 #pragma mark TokenRegisterServiceDelegate
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSString *)token {
-    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken triggered, token:%@", token);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                    message:[NSString stringWithFormat:@"Token: %@", token]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"didFailToRegisterForRemoteNotificationsWithError triggered, error:%@", [error localizedDescription]);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

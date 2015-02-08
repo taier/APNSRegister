@@ -15,8 +15,8 @@
 @interface TokenRegisterService () 
 
 // Private Methods
-void p_registerForRemoteNotifications();
-void p_unregisterForRemoteNotifications();
+- (void)p_registerForRemoteNotifications;
+- (void)p_unregisterForRemoteNotifications;
 
 // Overridden Delegates
 void didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication* application, NSData* deviceToken);
@@ -42,27 +42,27 @@ void didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIAppli
 #pragma mark Protocol Methods
 
 - (void)registerForRemoteNotifications {
-    p_registerForRemoteNotifications();
+    [self p_registerForRemoteNotifications];
 }
 - (void)unregisterForRemoteNotifications {
-    p_unregisterForRemoteNotifications();
+    [self p_unregisterForRemoteNotifications];
 }
 
 #pragma mark Private Methods
 
-void p_registerForRemoteNotifications() {
+- (void)p_registerForRemoteNotifications {
     NSLog(@"Registering app for remote notifications.");
     
     // Modify UIApplicationDelegate, to silently receive delegates. Without touching (writing any code in) AppDelegate.
     id delegate = [[UIApplication sharedApplication] delegate];
     Class objectClass = object_getClass(delegate);
-    
-    NSString *newClassName = [NSString stringWithFormat:@"Custom_%@", NSStringFromClass(objectClass)];
+    // Add Custom to our class name, so we won't mess it with original
+    NSString *newClassName = NSStringFromClass(objectClass);
+    newClassName = [newClassName hasPrefix:@"Custom_"] ? newClassName : [NSString stringWithFormat:@"Custom_%@", newClassName];
+    // Try to get class from runtime
     Class modDelegate = NSClassFromString(newClassName);
-    
     if (modDelegate == nil) {
         // This class doesn't exist; create it.
-        // Allocate a new class
         modDelegate = objc_allocateClassPair(objectClass, [newClassName UTF8String], 0);
         
         SEL selectorToOverride1 = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
@@ -94,7 +94,7 @@ void p_registerForRemoteNotifications() {
      }
 }
 
-void p_unregisterForRemoteNotifications() {
+- (void)p_unregisterForRemoteNotifications {
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
      NSLog(@"Did unregister device");
 }
